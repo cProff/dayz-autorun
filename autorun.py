@@ -21,6 +21,10 @@ class AutoRunner():
             win32api.keybd_event(0x57, win32api.MapVirtualKey(0x57, 0), 0, 0)  # w
             win32api.keybd_event(0xA0, win32api.MapVirtualKey(0xA0, 0), 0, 0)  # shift
 
+    def forse_release(self):
+        win32api.keybd_event(0x57, win32api.MapVirtualKey(0x57, 0), 0x0002, 0)  # w
+        win32api.keybd_event(0xA0, win32api.MapVirtualKey(0xA0, 0), 0x0002, 0)  # shift
+
     def stop(self, key):
         if self.letRelease[key]:
             self.letRelease[key] = False
@@ -38,4 +42,5 @@ class AutoRunner():
         keyboard.on_release_key('shift', lambda e: self.stop('w'))
     
     def disable(self):
+        self.forse_release()
         keyboard.unhook_all()
