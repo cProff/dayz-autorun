@@ -88,6 +88,8 @@ class TaskBarIcon(wx.adv.TaskBarIcon):
 
         self.onGo = True
         self.dayzState = None
+        if self.onGo:
+            wx.CallLater(1000, self.on_timer)
 
     def CreatePopupMenu(self):
         menu = wx.Menu()
@@ -127,10 +129,11 @@ class TaskBarIcon(wx.adv.TaskBarIcon):
             if newState:
                 self.autorunHK.enable()
                 notify('Autorun is ready.')
-            else:
+            elif not self.dayzState is None:
                 self.autorunHK.disable()
                 notify('Autoran is stopped.')
         self.dayzState = newState
+        wx.CallLater(1000, self.on_timer)
 
     def on_exit(self, event):
         wx.CallAfter(self.Destroy)
