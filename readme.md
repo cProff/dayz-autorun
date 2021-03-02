@@ -25,4 +25,4 @@ If you don't want **DayZ_AutoRun** to send you notification every time it save y
 
 #### How it works
 
-This app just changes ModernWarfare.exe title to  ModernWarfare.exe_backup every tine WarZone starts. And change name back on WarZone close.
+This app create a hotkey that will press W and Shift buttons when DayZ_64.exe is running. Against all other autorun apps (like AHK scripts) this one will stop pushing buttons if you wanna run by yorself.
