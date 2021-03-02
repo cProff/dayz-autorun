@@ -15,7 +15,7 @@ TRAY_TOOLTIP = 'DayZ AutoRun'
 TRAY_ICON = 'icon-white.ico'
 PROCESS_NAME = 'DayZ_x64.exe'
 VERSION = 'v0.1'
-REPO = None #'cproff/wzfix'
+REPO = 'cproff/dayz-autorun'
 
 
 def notify(text, timeout=3, force=False):
