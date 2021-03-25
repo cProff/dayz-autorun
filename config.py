@@ -1,6 +1,7 @@
 import configparser
+DEFAULT_SETTINGS = {'silence': 0, 'autorun_hk':'num minus', 'dwarfglitch_hk':'ctrl+j', 'autorun_state':1, 'dwarfglitch_state':1}
+BOOL_KEYS = ['silence', 'autorun_state', 'dwarfglitch_state']
 
-DEFAULT_SETTINGS = {'silence': 0, 'hotkey':'plus'}
 SETTINGS = DEFAULT_SETTINGS
 
 def save():
@@ -16,7 +17,14 @@ def load():
     try:
         config.read('params.ini')
         res.update(config['SETTINGS'])
-        res['silence'] = int(res['silence'])
+        for key in BOOL_KEYS:
+            if res[key] in ['True', 'true']:
+                res[key] = True
+            elif res[key] in ['False', 'false']:
+                res[key] = False
+            else:
+                res[key] = int(res[key])
+
         SETTINGS.update(res)
     except Exception as e:
         print(e)
